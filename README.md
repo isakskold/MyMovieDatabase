@@ -17,11 +17,12 @@ Exempelbilder [hittar ni här](https://drive.google.com/file/d/17IRL7YcKr1dmxWuo
 #### För godkänt
 * På startsidan MÅSTE ni presentera 5 slumpmässiga trailers, samt hela topplistan för IMDBs 20 högts rankade filmer. Denna information läser ni in från [mitt filmAPI](https://santosnr6.github.io/Data/movies.json).
 * Det MÅSTE finnas sökfunktionalitet. Vid sökning skall strängen från inputfältet användas för att göra en bred sökning i [OMDB-APIet](https://www.omdbapi.com/).
-* Sökresultaten måste presenteras för användaren på ett tillfredsställande sätt där ni exempelvis kan skapa ett "kort" per film innehållandes titeln, samt en poster. (Det är också tillåtet att presentera sökresultaten i en automatisk lista med förslag på den input som användaren skriver in i sökfältet)
+* Sökresultaten MÅSTE presenteras för användaren på ett tillfredsställande sätt där ni exempelvis kan skapa ett "kort" per film innehållandes titeln, samt en poster. (Det är också tillåtet att presentera sökresultaten i en automatisk lista med förslag på den input som användaren skriver in i sökfältet)
 * Vid klick på ett sökresultat MÅSTE ni göra en ny, mer specifik sökning på [OMDB-APIet](https://www.omdbapi.com/) göras, baserat på den klickade filmens ImdbID. (Mer info om de olika sökningarna för APIet kommer nedan). Detta anrop kommer returnera mer specifik information om filmen som ni skall presentera för användaren (antingen på startsidan, eller på en egen sida).
 * Ni MÅSTE koda tillgängligt, dvs. alla bilder måste ha ALT-taggar, överanvänd inte DIV-element där de inte fyller någon funktion osv. Er sida kommer att granskas med ett tillgänglighetsverktyg (se nedan), där onödiga övertramp och Errors inte kommer att godkännas.
-* Ni måste skapa en responsiv webbplats. Inga element får sticka ut över kanter, eller utanför skärmen.
-* Er webbplats måste ha ett acceptabelt utseende (ni får använda mitt template).
+* Ni MÅSTE använda er av felhantering vid era API-anrop.
+* Ni MÅSTE skapa en responsiv webbplats. Inga element får sticka ut över kanter, eller utanför skärmen.
+* Er webbplats MÅSTE ha ett acceptabelt utseende (ni får använda mitt template).
 
 #### För Väl Godkänt
 * Skapa funktionalitet för att lägga till/ta bort filmer i en favoritlista (använd localStorage för detta). Dessa filmer skall även kunna visas för användaren (tex som i mitt exempel, men kan även göras på en ny sida).
