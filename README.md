@@ -8,7 +8,8 @@ Hej där, kodmästare! Det är dags att sätta på våra virtuella regissörskep
 ### Uppgift
 Ditt uppdrag är att skapa en webbapplikation som liknar IMBD (Internet Movie Database) där användare kan söka efter filmer, visa detaljerad information om filmer och lägga till sina favoritfilmer med mera.
 
-Exempel på hur webbapplikationen kan se ut [hittar ni här](https://vimeo.com/913498023/07076d7fb8?share=copy).
+Exempelfilm på hur webbapplikationen kan se ut [hittar ni här](https://vimeo.com/913498023/07076d7fb8?share=copy).
+Exempelbilder [hittar ni här](https://drive.google.com/file/d/17IRL7YcKr1dmxWuonzDkxwqbK_L5zBxM/view?usp=sharing), [här](https://drive.google.com/file/d/1ITrGvpT0W7VHCXCIaiV0GEVUumYTpo8K/view?usp=sharing), och [här](https://drive.google.com/file/d/1VEQ-GzUmK1SAw_3ISlyY8ZBgLNXgeB9u/view?usp=sharing).
 
 ### Tekniska Krav
 #### För godkänt
