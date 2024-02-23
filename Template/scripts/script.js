@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     console.log('load');
     //Förslagsvis anropar ni era funktioner som skall sätta lyssnare, rendera objekt osv. härifrån
     setupCarousel();
+    setupHeaderEvents();
 });
 
 //Denna funktion skapar funktionalitet för karusellen
@@ -27,4 +28,14 @@ function setupCarousel() {
             delete activeSlide.dataset.active;
         });
     });
+}
+
+function setupHeaderEvents() {
+    // Event listener for favBtn
+    favBtn.addEventListener('click', () => {
+        // Redirect to favorites.html when the button is clicked
+        window.location.href = "favorites.html";
+    });
+
+    // Add event listeners for other header activities here
 }
