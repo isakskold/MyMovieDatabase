@@ -143,10 +143,17 @@ body {
     display: flex;
     justify-content: center; /* Center the flex items horizontally */
     align-items: center; /* Center the flex items vertically (optional) */
+    flex-direction: column; /* Stack the flex items vertically */
 }
 
 
 .popular__title {
+    color: yellow;
+    display: block; /* Display as block to occupy full width */
+    text-align: center; /* Center the text horizontally */
+}
+
+.movie-card__title {
     color: yellow;
 }
 

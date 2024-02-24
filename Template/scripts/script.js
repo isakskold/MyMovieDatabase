@@ -5,6 +5,7 @@ window.addEventListener('load', () => {
     //Förslagsvis anropar ni era funktioner som skall sätta lyssnare, rendera objekt osv. härifrån
     setupCarousel();
     setupHeaderEvents();
+    setupPopularMovies();
 });
 
 //Denna funktion skapar funktionalitet för karusellen
@@ -37,5 +38,37 @@ function setupHeaderEvents() {
         window.location.href = "favorites.html";
     });
 
+    console.log("Header event handler set up");
+
     // Add event listeners for other header activities here
+}
+
+async function setupPopularMovies() {
+    try {
+        // Fetch movie data from the provided URL
+        const response = await fetch('https://santosnr6.github.io/Data/movies.json');
+        const data = await response.json();
+
+        const popularMoviesContainer = document.getElementById('popularCardContainer');
+        const movieCardTemplate = document.getElementById('movie-card-template');
+
+        // Iterate over the fetched movie data and create movie cards
+        data.forEach(movie => {
+            // Clone the movie card template
+            const movieCard = document.importNode(movieCardTemplate.content, true);
+
+            // Populate the movie card with data
+            const image = movieCard.querySelector('.movie-card__image');
+            const title = movieCard.querySelector('.movie-card__title');
+
+            image.src = movie.poster;
+            title.textContent = movie.title;
+
+            // Append the movie card to the container
+            popularMoviesContainer.appendChild(movieCard);
+            console.log("Movies succesfully appended to the template");
+        });
+    } catch (error) {
+        console.error('Error fetching movie data:', error);
+    }
 }
