@@ -137,7 +137,18 @@ body {
 /* Här skriver ni er CSS */
 
 
+/* Top 20 movies */
 
+.popular {
+    display: flex;
+    justify-content: center; /* Center the flex items horizontally */
+    align-items: center; /* Center the flex items vertically (optional) */
+}
+
+
+.popular__title {
+    color: yellow;
+}
 
 
 /* Media Queries */
