@@ -31,6 +31,7 @@ function setupCarousel() {
     });
 }
 
+//Function that handles events in header section
 function setupHeaderEvents() {
     // Event listener for favBtn
     favBtn.addEventListener('click', () => {
@@ -43,6 +44,7 @@ function setupHeaderEvents() {
     // Add event listeners for other header activities here
 }
 
+//Function that fetches data about movies, then creates a card for each based on the template card created in the html
 async function setupPopularMovies() {
     try {
         // Fetch movie data from the provided URL
