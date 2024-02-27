@@ -175,15 +175,30 @@ body {
 
 /* Search results */
 
+.results{
+    max-width: 100%;
+}
+
 .results__list {
     color: yellow;
+    max-width: 100%;
+    overflow: auto; /* Add scrollbar if content overflows */
+}
+
+.results__list li {
+    /* Adjust styles for list items */
+    max-width: 100%;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Display ellipsis for overflowing content */
+    margin-bottom: 1rem;
 }
 
 .overlay {
     position: absolute; 
-    top: 10%; /* Position the overlay from the top */
+    top: 110.09px; /* Position the overlay from the top */
     left: 50%; /* Position the overlay from the left */
-    transform: translate(-50%, -50%); /* Center the overlay horizontally and vertically */
+    transform: translateX(-50%);
     width: 80%; /* Set the width of the overlay */
     max-width: 600px; /* Set a maximum width for the overlay */
     height: auto; /* Automatically adjust the height */
