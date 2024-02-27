@@ -96,15 +96,61 @@ function addCarouselFunctionality(carousel) {
 
 //Function that handles events in header section
 function setupHeaderEvents() {
-    // Event listener for favBtn
-    favBtn.addEventListener('click', () => {
-        // Redirect to favorites.html when the button is clicked
+    document.getElementById('searchForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        const searchInput = document.getElementById('searchInput').value.trim(); // Get search input value
+        
+        if (searchInput) {
+            const apiKey = '71dd8ef'; // Your OMDB API key
+            const apiUrl = `https://www.omdbapi.com/?s=${encodeURIComponent(searchInput)}&apikey=${apiKey}`; // Construct API URL
+            
+            try {
+                const response = await fetch(apiUrl); // Fetch movie data
+                const data = await response.json(); // Parse JSON response
+                
+                if (data.Response === 'True') {
+                    const searchResults = document.getElementById('searchResults');
+                    searchResults.classList.remove('d-none'); // Remove d-none class to show section
+                    document.getElementById('searchResults').classList.remove('d-none'); // Show overlay
+
+                    displayMovies(data.Search, searchResults); // Call function to display movies
+                } else {
+                    alert(data.Error); // Display error message
+                }
+            } catch (error) {
+                console.error('Error fetching movie data:', error);
+                alert('An error occurred. Please try again.'); // Display alert for any other errors
+            }
+        } else {
+            alert('Please enter a movie title to search.'); // Display alert if search input is empty
+        }
+    });
+
+    document.getElementById('favBtn').addEventListener('click', function() {
         window.location.href = "favorites.html";
     });
 
-    console.log("Header event handler set up");
+    // Close search results when clicking outside
+    document.body.addEventListener('click', function(event) {
+        const searchResults = document.getElementById('searchResults');
+        
+        if (!searchResults.contains(event.target)) {
+            searchResults.classList.add('d-none'); // Hide search results
+            
+        }
+    });
+}
 
-    // Add event listeners for other header activities here
+function displayMovies(movies, container) {
+    const resultsList = container.querySelector('.results__list');
+    resultsList.innerHTML = ''; // Clear previous search results
+
+    movies.forEach(movie => {
+        const listItem = document.createElement('li');
+        listItem.textContent = movie.Title; // Display movie title
+        resultsList.appendChild(listItem);
+    });
 }
 
 //Function that fetches data about movies, then creates a card for each based on the template card created in the html
