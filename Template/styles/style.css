@@ -157,6 +157,10 @@ body {
     color: yellow;
 }
 
+.movie-card__image {
+    cursor: pointer;
+}
+
 
 /* Media Queries */
 @media screen and (max-width: 1380px) {
