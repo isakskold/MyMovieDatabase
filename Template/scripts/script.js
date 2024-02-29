@@ -96,14 +96,15 @@ function addCarouselFunctionality(carousel) {
 
 //Function that handles events in header section
 function setupHeaderEvents() {
-    document.getElementById('searchForm').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Prevent default form submission
+    const searchInput = document.getElementById('searchInput');
+    let alertDisplayed = false; // Flag to track if alert is displayed
+
+    searchInput.addEventListener('input', async function(event) {
+        const searchInputValue = searchInput.value.trim(); // Get search input value
         
-        const searchInput = document.getElementById('searchInput').value.trim(); // Get search input value
-        
-        if (searchInput) {
+        if (searchInputValue.length >= 3) { // Check if input length is at least 3 characters
             const apiKey = '71dd8ef'; // Your OMDB API key
-            const apiUrl = `https://www.omdbapi.com/?s=${encodeURIComponent(searchInput)}&apikey=${apiKey}`; // Construct API URL
+            const apiUrl = `https://www.omdbapi.com/?s=${encodeURIComponent(searchInputValue)}&apikey=${apiKey}`; // Construct API URL
             
             try {
                 const response = await fetch(apiUrl); // Fetch movie data
@@ -112,18 +113,20 @@ function setupHeaderEvents() {
                 if (data.Response === 'True') {
                     const searchResults = document.getElementById('searchResults');
                     searchResults.classList.remove('d-none'); // Remove d-none class to show section
-                    document.getElementById('searchResults').classList.remove('d-none'); // Show overlay
-
                     displayMovies(data.Search, searchResults); // Call function to display movies
                 } else {
-                    alert(data.Error); // Display error message
+                    if (!alertDisplayed) {
+                        alertDisplayed = true; // Set flag to true
+                        console.log(data.Error); // Log error message
+                    }
                 }
             } catch (error) {
                 console.error('Error fetching movie data:', error);
-                alert('An error occurred. Please try again.'); // Display alert for any other errors
+                // No need to display alert for any other errors
             }
         } else {
-            alert('Please enter a movie title to search.'); // Display alert if search input is empty
+            const searchResults = document.getElementById('searchResults');
+            searchResults.classList.add('d-none'); // Hide search results if input length is less than 3
         }
     });
 
@@ -134,13 +137,16 @@ function setupHeaderEvents() {
     // Close search results when clicking outside
     document.body.addEventListener('click', function(event) {
         const searchResults = document.getElementById('searchResults');
+        const searchForm = document.getElementById('searchForm');
         
-        if (!searchResults.contains(event.target)) {
-            searchResults.classList.add('d-none'); // Hide search results
-            
+        if (!searchResults.contains(event.target) && event.target !== searchInput && event.target !== searchForm) {
+            searchResults.classList.add('d-none'); // Hide search results if clicked outside
         }
     });
 }
+
+
+
 
 function displayMovies(movies, container) {
     const resultsList = container.querySelector('.results__list');
