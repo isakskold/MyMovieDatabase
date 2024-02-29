@@ -5,12 +5,16 @@ const globalVars = {
     searchBtn: document.getElementById("searchBtn"),
     favBtn: document.getElementById("favBtn"),
     apiKey: '71dd8ef',
+
     
     apiUrl: async function(searchInputValue) {
+
         return `https://www.omdbapi.com/?s=${encodeURIComponent(searchInputValue)}&apikey=${this.apiKey}`;
     },
 
+
     setupHeaderEvents: function(){
+
         //Search form
         const searchInput = document.getElementById('searchInput');
         let alertDisplayed = false; // Flag to track if alert is displayed
@@ -29,7 +33,7 @@ const globalVars = {
                     if (data.Response === 'True') {
                         const searchResults = document.getElementById('searchResults');
                         searchResults.classList.remove('d-none'); // Remove d-none class to show section
-                        displayMovies(data.Search, searchResults); // Call function to display movies
+                        globalVars.displayMovies(data.Search, searchResults); // Call function to display movies
                     } else {
                         if (!alertDisplayed) {
                             alertDisplayed = true; // Set flag to true
@@ -59,6 +63,36 @@ const globalVars = {
             if (!searchResults.contains(event.target) && event.target !== searchInput && event.target !== searchForm) {
                 searchResults.classList.add('d-none'); // Hide search results if clicked outside
             }
+        });
+    },
+
+
+    displayMovies: function(movieTitles, resultsContainer){
+
+        const resultList = resultsContainer.querySelector('.results__list');
+        resultList.innerHTML = ''; // Clear previous search results
+
+        movieTitles.forEach(movie => {
+            const listItem = document.createElement('li');
+            const link = document.createElement('a');
+
+            link.textContent = movie.Title; // Display movie title
+            link.href = `movie.html?imdbID=${movie.imdbID}`; // Set href attribute with IMDb ID as query parameter
+
+            // Apply custom CSS to remove default link styles
+            link.style.color = 'inherit'; // Inherit color from parent element
+            link.style.textDecoration = 'none'; // Remove underline
+
+            link.addEventListener('click', function(event) {
+                // Prevent default action of link click to avoid immediate redirection
+                event.preventDefault();
+                
+                // Redirect to movie.html with IMDb ID as query parameter
+                window.location.href = link.href;
+            });
+
+            listItem.appendChild(link); // Display movie title
+            resultList.appendChild(listItem);
         });
     }
 }
