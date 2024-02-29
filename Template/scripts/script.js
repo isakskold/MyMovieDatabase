@@ -148,14 +148,14 @@ function setupHeaderEvents() {
 
 
 
-function displayMovies(movies, container) {
-    const resultsList = container.querySelector('.results__list');
-    resultsList.innerHTML = ''; // Clear previous search results
+function displayMovies(movieTitles, resultsContainer) {
+    const resultList = resultsContainer.querySelector('.results__list');
+    resultList.innerHTML = ''; // Clear previous search results
 
-    movies.forEach(movie => {
+    movieTitles.forEach(title => {
         const listItem = document.createElement('li');
-        listItem.textContent = movie.Title; // Display movie title
-        resultsList.appendChild(listItem);
+        listItem.textContent = title; // Display movie title
+        resultList.appendChild(listItem);
     });
 }
 
