@@ -152,9 +152,9 @@ function displayMovies(movieTitles, resultsContainer) {
     const resultList = resultsContainer.querySelector('.results__list');
     resultList.innerHTML = ''; // Clear previous search results
 
-    movieTitles.forEach(title => {
+    movieTitles.forEach(movie => {
         const listItem = document.createElement('li');
-        listItem.textContent = title; // Display movie title
+        listItem.textContent = movie.Title; // Display movie title
         resultList.appendChild(listItem);
     });
 }
