@@ -96,6 +96,8 @@ function addCarouselFunctionality(carousel) {
 
 //Function that handles events in header section
 function setupHeaderEvents() {
+
+    //Search form
     const searchInput = document.getElementById('searchInput');
     let alertDisplayed = false; // Flag to track if alert is displayed
 
@@ -130,6 +132,7 @@ function setupHeaderEvents() {
         }
     });
 
+    //Favorites button
     document.getElementById('favBtn').addEventListener('click', function() {
         window.location.href = "favorites.html";
     });
