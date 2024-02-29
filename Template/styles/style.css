@@ -146,15 +146,69 @@ body {
     flex-direction: column; /* Stack the flex items vertically */
 }
 
-
 .popular__title {
     color: yellow;
     display: block; /* Display as block to occupy full width */
     text-align: center; /* Center the text horizontally */
+    
 }
 
 .movie-card__title {
     color: yellow;
+    background-color: rgba(131, 131, 131, 0.359);
+    text-align: center;
+    width: 379.99px;
+
+}
+
+.movie-card__image {
+    cursor: pointer;
+    display: block; /* Ensures the image behaves as a block element */
+    margin-left: auto; /* Automatically adjust left margin */
+    margin-right: auto; /* Automatically adjust right margin */
+}
+
+.movie-card {
+    padding-top: 3rem;
+}
+
+
+/* Search results */
+
+.results{
+    max-width: 100%;
+}
+
+.results__list {
+    color: yellow;
+    max-width: 100%;
+    overflow: auto; /* Add scrollbar if content overflows */
+}
+
+.results__list li {
+    /* Adjust styles for list items */
+    max-width: 100%;
+    white-space: nowrap; /* Prevent line breaks */
+    overflow: hidden; /* Hide overflowing content */
+    text-overflow: ellipsis; /* Display ellipsis for overflowing content */
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+.overlay {
+    position: absolute; 
+    top: 110.09px; /* Position the overlay from the top */
+    left: 50%; /* Position the overlay from the left */
+    transform: translateX(-50%);
+    width: 80%; /* Set the width of the overlay */
+    max-width: 600px; /* Set a maximum width for the overlay */
+    height: auto; /* Automatically adjust the height */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    z-index: 1000; /* Ensure the overlay is on top of other content */
+    padding: 20px; /* Add padding for content */
+    border-radius: 8px; /* Add border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7); /* Add box shadow for depth */
 }
 
 
