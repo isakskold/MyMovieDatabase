@@ -212,6 +212,42 @@ body {
 }
 
 
+/* Movie details */
+
+.movie-details {
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: var(--primary-grey);
+    border-radius: 1rem;
+}
+
+.movie-details__image {
+    margin-right: 3rem;
+}
+
+.movie-details__info {
+    max-width: 30vw;
+
+}
+
+.movie-details__label {
+    color: yellow;
+
+}
+
+.movie-details__data {
+    color: white;
+}
+
+.movie-details__info-list li {
+    margin-bottom: 1rem;
+    list-style-type: none;
+}
+
 /* Media Queries */
 @media screen and (max-width: 1380px) {
     .content-wrapper {
