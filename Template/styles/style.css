@@ -40,6 +40,7 @@ body {
 
 .header__flex {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
@@ -53,6 +54,12 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.formLabel {
+    color: yellow;
+    align-self: center;
+    display: block;
 }
 
 .header input {
@@ -196,15 +203,21 @@ body {
     cursor: pointer;
 }
 
+.results__list img {
+    max-width: 100px; /* Set the maximum width of the images */
+    height: auto; /* Automatically adjust the height while maintaining aspect ratio */
+    margin-right: 10px; /* Add some spacing between the images and other elements */
+}
+
 .overlay {
     position: absolute; 
-    top: 110.09px; /* Position the overlay from the top */
+    top: 150px; /* Position the overlay from the top */
     left: 50%; /* Position the overlay from the left */
     transform: translateX(-50%);
     width: 80%; /* Set the width of the overlay */
     max-width: 600px; /* Set a maximum width for the overlay */
     height: auto; /* Automatically adjust the height */
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
     z-index: 1000; /* Ensure the overlay is on top of other content */
     padding: 20px; /* Add padding for content */
     border-radius: 8px; /* Add border radius for rounded corners */
@@ -223,6 +236,11 @@ body {
     padding: 2rem;
     background-color: var(--primary-grey);
     border-radius: 1rem;
+}
+
+.movie-details__title{
+    color: yellow;
+    padding-bottom: 3rem;
 }
 
 .movie-details__image {
@@ -251,15 +269,38 @@ body {
 /* Media Queries */
 @media screen and (max-width: 1380px) {
     .content-wrapper {
+        width: 1100px ;
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1150px) {
     .content-wrapper {
+        width: 800px
+    }
+
+    .movie-details__image img{
+        max-width: 200px;
+        height: auto;
     }
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
     .content-wrapper {
+        width: 500px;
+    }
+    
+    .movie-details__image img{
+        max-width: 100px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .content-wrapper {
+        width: 300px;
+    }
+
+    .movie-details{
+        display: block;
     }
 }
