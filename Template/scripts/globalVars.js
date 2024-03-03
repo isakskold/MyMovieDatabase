@@ -5,14 +5,19 @@ const globalVars = {
     searchBtn: document.getElementById("searchBtn"),
     favBtn: document.getElementById("favBtn"),
     apiKey: '71dd8ef',
+
     
     apiUrl: async function(searchInputValue) {
+
         return `https://www.omdbapi.com/?s=${encodeURIComponent(searchInputValue)}&apikey=${this.apiKey}`;
     },
 
+
     setupHeaderEvents: function(){
+
         //Search form
         const searchInput = document.getElementById('searchInput');
+        const searchForm = document.getElementById('searchForm'); // Get the search form element
         let alertDisplayed = false; // Flag to track if alert is displayed
 
         searchInput.addEventListener('input', async function(event) {
@@ -29,7 +34,7 @@ const globalVars = {
                     if (data.Response === 'True') {
                         const searchResults = document.getElementById('searchResults');
                         searchResults.classList.remove('d-none'); // Remove d-none class to show section
-                        displayMovies(data.Search, searchResults); // Call function to display movies
+                        globalVars.displayMovies(data.Search, searchResults); // Call function to display movies
                     } else {
                         if (!alertDisplayed) {
                             alertDisplayed = true; // Set flag to true
@@ -46,10 +51,8 @@ const globalVars = {
             }
         });
 
-        //Favorites button
-        document.getElementById('favBtn').addEventListener('click', function() {
-            window.location.href = "favorites.html";
-        });
+        
+        
 
         // Close search results when clicking outside
         document.body.addEventListener('click', function(event) {
@@ -59,6 +62,44 @@ const globalVars = {
             if (!searchResults.contains(event.target) && event.target !== searchInput && event.target !== searchForm) {
                 searchResults.classList.add('d-none'); // Hide search results if clicked outside
             }
+        });
+
+    
+
+    },
+
+
+    displayMovies: function(movieData, resultsContainer){
+
+        const resultList = resultsContainer.querySelector('.results__list');
+        resultList.innerHTML = ''; // Clear previous search results
+    
+        movieData.forEach(movie => {
+            const listItem = document.createElement('li');
+    
+            // Create anchor tag for the movie title
+            const link = document.createElement('a');
+            link.textContent = movie.Title; // Display movie title
+            link.href = `movie.html?imdbID=${movie.imdbID}`; // Set href attribute with IMDb ID as query parameter
+    
+            // Apply custom CSS to remove default link styles
+            link.style.color = 'inherit'; // Inherit color from parent element
+            link.style.textDecoration = 'none'; // Remove underline
+    
+            // Create elements for movie image, and rating
+            const img = document.createElement('img');
+            img.src = movie.Poster;
+            img.alt = movie.Title;
+    
+            
+    
+            // Append elements to the list item
+            listItem.appendChild(img);
+            listItem.appendChild(link); // Append anchor tag for the movie title
+            
+    
+            // Append list item to the result list
+            resultList.appendChild(listItem);
         });
     }
 }

@@ -95,33 +95,7 @@ function addCarouselFunctionality(carousel) {
 }
 
 
-function displayMovies(movieTitles, resultsContainer) {
-    const resultList = resultsContainer.querySelector('.results__list');
-    resultList.innerHTML = ''; // Clear previous search results
 
-    movieTitles.forEach(movie => {
-        const listItem = document.createElement('li');
-        const link = document.createElement('a');
-
-        link.textContent = movie.Title; // Display movie title
-        link.href = `movie.html?imdbID=${movie.imdbID}`; // Set href attribute with IMDb ID as query parameter
-
-        // Apply custom CSS to remove default link styles
-        link.style.color = 'inherit'; // Inherit color from parent element
-        link.style.textDecoration = 'none'; // Remove underline
-
-        link.addEventListener('click', function(event) {
-            // Prevent default action of link click to avoid immediate redirection
-            event.preventDefault();
-            
-            // Redirect to movie.html with IMDb ID as query parameter
-            window.location.href = link.href;
-        });
-
-        listItem.appendChild(link); // Display movie title
-        resultList.appendChild(listItem);
-    });
-}
 
 //Function that fetches data about movies, then creates a card for each based on the template card created in the html
 async function setupPopularMovies() {
@@ -144,12 +118,6 @@ async function setupPopularMovies() {
 
             image.src = movie.poster;
             title.textContent = movie.title;
-
-            // Add event listener to the image
-            image.addEventListener('click', () => {
-                // Redirect to another page with more specified info about the chosen movie
-                window.location.href = 'movie.html?movieId=' + movie.id;
-            });
 
             // Append the movie card to the container
             popularMoviesContainer.appendChild(movieCard);
