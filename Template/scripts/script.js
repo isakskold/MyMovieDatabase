@@ -119,12 +119,6 @@ async function setupPopularMovies() {
             image.src = movie.poster;
             title.textContent = movie.title;
 
-            // Add event listener to the image
-            image.addEventListener('click', () => {
-                // Redirect to another page with more specified info about the chosen movie
-                window.location.href = 'movie.html?movieId=' + movie.id;
-            });
-
             // Append the movie card to the container
             popularMoviesContainer.appendChild(movieCard);
             console.log("Movies succesfully appended to the template");
