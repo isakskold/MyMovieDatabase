@@ -17,6 +17,7 @@ const globalVars = {
 
         //Search form
         const searchInput = document.getElementById('searchInput');
+        const searchForm = document.getElementById('searchForm'); // Get the search form element
         let alertDisplayed = false; // Flag to track if alert is displayed
 
         searchInput.addEventListener('input', async function(event) {
@@ -64,6 +65,16 @@ const globalVars = {
                 searchResults.classList.add('d-none'); // Hide search results if clicked outside
             }
         });
+
+        // Add submit event listener to the search form
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission behavior
+            const searchInputValue = searchInput.value.trim(); // Get search input value
+            
+            // Redirect to searchResultPage with search query as URL parameter
+            window.location.href = `searchResultPage.html?searchQuery=${encodeURIComponent(searchInputValue)}`;
+        });
+
     },
 
 
